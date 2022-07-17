@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Formulario</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+
+  <body>
+    <h1>Formulario</h1>
+    <form action="/" method="POST">
+      <label for="name">Ingrese su nombre:</label>
+      <input type="text" id="name" name="name" /><br />
+      <% if (locals.errors && errors.name) { %>
+      <p style="color: tomato"><%= errors.name.msg %></p>
+
+      <% } %>
+
+      <label for="colores">listado de colores:</label>
+      <select name="colores" id="colores">
+        <option value="">elige un color</option>
+        <option value="azul">azul</option>
+        <option value="amarillo">amarillo</option>
+        <option value="naranja">naranja</option>
+        <option value="lila">lila</option>
+        <option value="rosa">rosa</option></select
+      ><br />
+      <% if (locals.errors && errors.colores) { %>
+      <p style="color: tomato"><%= errors.colores.msg %></p>
+
+      <% } %>
+      <label for="email">Ingrese su mail:</label>
+      <input type="email" name="email" id="email" /><br />
+      <% if (locals.errors && errors.email) { %>
+      <p style="color: tomato"><%= errors.email.msg %></p>
+
+      <% } %>
+      <label for="edad">Ingrese su edad:</label>
+      <input type="text" name="edad" id="edad" /><br />
+      <% if (locals.errors && errors.edad) { %>
+      <p style="color: tomato"><%= errors.edad.msg %></p>
+
+      <% } %>
+      <button type="submit">Enviar</button>
+    </form>
+
+    <% if (old != undefined) { %>
+    <p>
+      Hola <%= old.name %> elegiste el color: <%= old.colores %> tu email es:
+      <%= old.email %> y tu edad es: <%= old.edad %>
+    </p>
+    <% } %>
+  </body>
+</html>
